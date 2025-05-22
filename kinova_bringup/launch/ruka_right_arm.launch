@@ -1,0 +1,29 @@
+<launch>
+
+  <arg name="use_urdf" default="true"/>
+	<arg name="use_jaco_v1_fingers" default="false" />
+	<arg name="feedback_publish_rate" default="0.1" />
+	<arg name="respawn_driver" default="False" />
+
+
+  <!-- If the node handles multiple robots uncomment this and configure /config/multiple_robots.yaml" -->
+  <node name="right_driver" pkg="kinova_driver" type="kinova_arm_driver" output="screen" cwd="node" args="j2n6s300" respawn="$(arg respawn_driver)">
+    <rosparam file="$(find kinova_bringup)/launch/config/robot_parameters.yaml" command="load" />
+    <param name="serial_number" value="PJ00900006027686" />   
+    <param name="robot_name" value="right" />   
+    <param name="robot_type" value="j2n6s300" />  
+    <param name="use_jaco_v1_fingers" value="$(arg use_jaco_v1_fingers)" />   
+    <param name="status_interval_seconds" value="$(arg feedback_publish_rate)" />
+  </node>
+
+  <group if="$(arg use_urdf)">
+    <param name="robot_description" command="$(find xacro)/xacro '$(find kinova_description)/urdf/two_kinovas_standalone.xacro'" />
+    <node name="right_state_publisher"
+          pkg="robot_state_publisher"
+          type="robot_state_publisher">
+      <remap from="joint_states" to="/right_driver/out/joint_state"/>
+    </node>
+  </group>
+
+
+</launch>
