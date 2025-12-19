@@ -1,4 +1,11 @@
-# Table of Contents 
+# GRAIL Instructions
+Initialize two bimanual kinova drivers:
+```
+roslaunch kinova_bringup grail_two_arm.launch
+```
+
+
+# Original Kinova-ROS Table of Contents  
 - [Important](#important) 
 - [Supported versions](#supported-versions)
 - [Kinova-ROS](#kinova-ros)
