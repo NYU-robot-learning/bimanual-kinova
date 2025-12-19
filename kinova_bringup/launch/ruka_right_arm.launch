@@ -9,7 +9,7 @@
   <!-- If the node handles multiple robots uncomment this and configure /config/multiple_robots.yaml" -->
   <node name="right_driver" pkg="kinova_driver" type="kinova_arm_driver" output="screen" cwd="node" args="j2n6s300" respawn="$(arg respawn_driver)">
     <rosparam file="$(find kinova_bringup)/launch/config/robot_parameters.yaml" command="load" />
-    <param name="serial_number" value="PJ00900006027686" />   
+    <param name="serial_number" value="PJ00900006450593" />   
     <param name="robot_name" value="right" />   
     <param name="robot_type" value="j2n6s300" />  
     <param name="use_jaco_v1_fingers" value="$(arg use_jaco_v1_fingers)" />   
