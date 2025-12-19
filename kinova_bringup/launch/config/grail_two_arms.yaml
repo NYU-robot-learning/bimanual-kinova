@@ -1,0 +1,9 @@
+left_arm:
+  serial: PJ00900006027686
+  type: j2n6s300
+  name: left
+
+right_arm: 
+  serial: PJ00900006450593
+  type: j2n6s300
+  name: right
